@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login to TravelBossKu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      padding-right: 40px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tbklogo {
+      width: 100px; 
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+    input {
+      width: 100%; 
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    a.button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .switch-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .switch-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    /* Style for the "Go Back to Homepage" button */
+    .go-back-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      margin-left: 747px;
+    }
+
+  </style>
+
+</head>
+<body>
+  <div class="container" style="margin-bottom: 100px;">
+    <img class="tbklogo" src="imgs/tbk_logo.png" alt="TravelBossKu Logo">
+    <h1>TravelBossKu Login</h1>
+    <form id="login-form">
+      <input type="email" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+      <input type="password" placeholder="Password" required>
+      <a href="javascript:void(0);" class="button" onclick="validateAndRedirect()">Login</a>
+    </form>
+    <div class="switch-link">
+      <a href="signup.html">Don't have an account? Sign Up</a>
+    </div>
+  </div>
+
+  <script>
+    function validateAndRedirect() {
+      const emailInput = document.querySelector('input[type="email"]');
+      const passwordInput = document.querySelector('input[type="password"]');
+
+      if (!emailInput.checkValidity()) {
+        alert("Please enter a valid email address.");
+      } else if (passwordInput.value === "") {
+        alert("Please enter a password.");
+      } else {
+        alert("You have logged in successfully!");
+        // Redirect to the homepage using window.location.href
+        window.location.href = "homepage.html";
+      }
+    }
+  </script>
+  
+  <a href="homepage.html" class="go-back-button">Go Back to Homepage</a>
+</body>
+</html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- CSS BEGINS HERE -->
+<style>
+
+    /* This part is for the overall style of the page */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Gill Sans, Gill Sans MT, Calibri, sans-serif;
+    }
+    
+    /* Starting from this part it belongs to the nav bar (please use) */
+    body {
+      min-height: 100vh;
+      background: linear-gradient(45deg, #ffffff, #89cff0, #00ff00);
+      background-size: 400%, 400%;
+    }
+
+    @keyframes gradientAnimation{
+            0%{background-position: 0% 50%;}
+            50%{background-position: 100% 50%}
+            100%{background-position: 0% 50%}
+    }
+    
+    .header {
+      position: fixed;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 100px;
+      border-bottom: 2px solid rgba(5,76,150,255);
+      z-index: 2;
+    }
+    
+    .logo img {
+      height: 80px; 
+      width: auto; 
+      margin-right: 70px;  
+      margin-left: -50px;
+    }
+    
+    .navbar {
+      flex-grow: 0;
+      display: flex;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      gap: 60px;
+    }
+    
+    nav ul li {
+      margin-right: 20px;
+      background-color: rgba(5,76,150,255);
+      border-radius: 10px;
+      padding: 2px 30px; 
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      color: white;
+    }
+
+    .blue-line {
+      margin-top: 42px;
+      width: 200%;
+      height: 2px;
+      background-color: rgba(5, 76, 150, 255);
+      position: fixed;
+      top: 80px;
+      left: 0;
+      z-index: 1;
+    } 
+    /* Nav bar ends here */
+
+    /* This is exclusive to my content (can refer) */
+    /* It contains hover image style, captions, content/paragraph style, title, text, basically everything */
+    .blog-post-image {
+      margin-top: 100px;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .blog-post-image2 {
+      margin-top: 25px;
+      margin-bottom: 20px;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .blog-post-image3 {
+      margin-left: 10px;
+      margin-top: 25px;
+      margin-bottom: 20px;
+      margin-right: 10px;
+      width: 100%; /* Adjust the width for the images */
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .blog-post-content {
+      padding-top: 150px; 
+    }
+
+    .blog-post-content .blog-post-image {
+      position: relative;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .blog-post-content:hover .blog-post-image:not(.navbar .blog-post-image) {
+      opacity: 0.8; 
+      cursor: pointer;
+      z-index: 0;
+    }
+
+    .blog-post-content .blog-post-image2 {
+      position: relative;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .blog-post-content:hover .blog-post-image2:not(.navbar .blog-post-image2) {
+      opacity: 0.8; 
+      cursor: pointer;
+      z-index: 0;
+    }
+
+    .blog-post-title {
+      margin-left: 20px;
+      margin-top: 20px;
+      font-size: 50px;
+      font-weight: bold;
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .blog-post-sub-title {
+      margin-left: 20px;
+      margin-top: 5px;
+      font-size: 35px;
+      font-weight: bold;
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .blog-post-sub-title2 {
+      margin-left: 20px;
+      margin-top: 40px;
+      margin-bottom: 0px;
+      font-size: 35px;
+      font-weight: bold;
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .blog-post-text {
+      margin-top: 10px;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: black;
+      word-spacing: 3px;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .blog-post-text2 {
+      font-size: 32px;
+      color: black;
+      word-spacing: 3px;
+      line-height: 1.5;
+      text-align: justify;
+      margin-top: -155px;
+    } 
+
+    .blog-post-image-caption {
+      position: absolute;
+      bottom: 40px;
+      left: 20px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 5px 10px;
+      border-radius: 5px;
+      width: calc(100% - 40px); 
+      display: none;
+    }
+
+    .blog-post-content:hover .blog-post-image-caption {
+      display: block;
+    }
+
+    .blog-post-image-container {
+      position: relative;
+    }
+
+    .blog-post-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      margin-right: 150px;
+    }
+
+    .blog-post-image-wrapper {
+      flex: 0 0 300px;
+      margin-right: 20px;
+    }
+
+    .blog-post-content-wrapper {
+    flex: 1; 
+    }
+
+    /* Body content ends here */
+
+    /* This is the style for the footer part (please do use it also) */
+    .footer {
+      position: fixed;
+      background-color: white;
+      display: flex;
+      align-items: left;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      border-top: 2px solid rgba(5, 76, 150, 255);
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer p {
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .footer.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Footer style ends here */
+</style>
+
+<!-- HTML BEGINS HERE -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>TravelBossKu: George Town</title>
+</head>
+
+<body>
+    <header class="header">
+        <a class="logo" href="homepage.html"><img src="imgs/tbk_logo.png" alt="TBK Logo"></a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="states.html">States</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#">Dark Mode</a></li>
+                <li><a href="#">+</a></li>
+                <li><a href="#">Font Size</a></li>
+                <li><a href="#">-</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Blue line below the navigation bar -->
+    <div class="blue-line"></div>
+
+    <!-- The html part for most of my body content -->
+    <div class="blog-post-content">
+
+      <!-- The first main image goes here -->
+      <div class="blog-post-image-container">
+        <img class="blog-post-image" src="imgs/georgetownmain.png" alt="George Town">
+        <p class="blog-post-image-caption">By klook: "Explore Georgetown Half Day City Tour" - https://www.klook.com/activity/1869-explore-georgetown-penang/</p>
+      </div>
+
+      <!-- Main title, sub-title and paragraph goes here -->
+      <p class="blog-post-title">George Town</p>
+      <p class="blog-post-sub-title">History</p>
+      <p class="blog-post-text">George Town is the first city in Malaysia. The City centre has been inscribe as a UNESCO World Heritage Site singe 2008. Today, the city,
+        well known for its cultural diversity, colonial-era architecture and street food, is a booming tourist destination and still serves as the financial centre of 
+        northern Malaysia.
+      </p>
+      
+      <p class="blog-post-sub-title">Some Fun Facts about George Town</p>
+      <p class="blog-post-text">George Town is renowned for its vibrant street art scene. You can find colourful murals, installations and scultures all over the city.
+        Furthermore, George Town is also home to the Oldest Anglican Church and also the Largest Buddhist Temple in Southeast Asia, truly a Melting Pot of Cultures.
+      </p>
+
+      <p class="blog-post-sub-title2">Little India</p>
+      <div class="blog-post-image-container">
+        <img class="blog-post-image2" src="imgs/georgetown2.jpg" alt="George Town: Little India">
+        <p class="blog-post-image-caption">Picture by simonlong - https://www.tripsavvy.com/top-things-to-do-in-george-town-penang-4687174</p>
+      </div>
+      <p class="blog-post-text" style="margin-bottom: 100px;">The Little India is a main business district in Georgetown. Various Indian related businesses can be found
+        here. There are many Indian fashion stores which sell mostly saree, silk and cotton. While you walk by the shops, and Bollywood music setting the festive mood, Penang's famous
+        Banana Leaf Rice is one to be prioritised while you are here. The Oldest Hindu Temple, the colourful Sri Mahamariamman Temple is also located in Little India.​</p>
+      
+      <p class="blog-post-sub-title2" style="margin-top: -40px;">Fort Cornwallis</p>
+      <div class="blog-post-image-container">
+        <img class="blog-post-image2" src="imgs/fortcornwallis.jpg" alt="Fort Cornwallis">
+        <p class="blog-post-image-caption">Picture by Pangalau - retrieved from Wikipedia</p>
+      </div>
+      <p class="blog-post-text" style="margin-bottom: 100px;">Don't get bamboozled by the word Corn, Fort Cornwallis, named after Lieutenant-General The 2nd Earl Cornwallis, 
+      is the largest standing fort in Malaysia. While it has never engaged in actual combat during its operation, it is decorated with old cannons, it is said that the main purpose
+      of the fort is to protect Penang from pirates and Kedah. </p>
+
+      <p class="blog-post-sub-title2">George Town: Delicacies</p>
+      <p class="blog-post-text"><b>Well, it won't be Penang without good Penang food.</b> Here are some delicacies you can check out while in George Town:</p>
+
+      <div class="blog-post-section">
+        <div class="blog-post-image-wrapper">
+          <img class="blog-post-image3" src="imgs/samosa.png" alt="Samosa">
+        </div>
+        <div class="blog-post-content-wrapper">
+          <p class="blog-post-text2" style="margin-left: 18px; margin-top: -78px;">Penang Famous Samosa</p>
+          <p class="blog-post-text">
+            A Samosa is a South Asian pastry with either savoury or sweet filling. In Penang Famous Samosa, <i>(ps. everything in Penang has "famous" in front of it, don't ask me why)</i> 
+            they serve Chicken Samosa <i>(Curry Chicken, crispy and aromatic)</i>, Egg Samosa <i>(hard-boiled egg)</i>, Masala Vadai <i>(Our personal favourite with many spices)</i>, <i>Sweet Cake (Sweet and Milky)</i> and
+            Jelebi <i>(Deep Fried Donut)</i>.
+          </p>
+          <p class="blog-post-text" style="font-size: xx-small;font-style: italic;"> 
+            Image by Abby Choi, Google Reviews.
+          </p>
+        </div>
+      </div>
+
+      <div class="blog-post-section">
+        <div class="blog-post-image-wrapper">
+          <img class="blog-post-image3" src="imgs/charkueyteow.png" alt="Char Koay Teow">
+        </div>
+        <div class="blog-post-content-wrapper">
+          <p class="blog-post-text2" style="margin-left: 18px; margin-top: -78px;">Siam Road Charcoal Char Kuey Teow</p>
+          <p class="blog-post-text">
+            Siam Road Char Koay Teow is without a doubt the <i>most famous Char Koay Teow</i> place in Penang. Not only they sit above the rest in popularity but also taste above average as well.
+            The 81-year-old uncle Tan, still stands firmly, frying that oily goodness for people to savour. Some even call him the <i>King of Noodles</i> and <i>the oldest char kway teow legend</i>
+            in Malaysia. If you are in George Town, please do not hesitate to visit his <i>gerai</i>.
+          </p>
+          <p class="blog-post-text" style="font-size: xx-small;font-style: italic;"> 
+            Image by synthiatjipto @Instagram.
+          </p>
+        </div>
+      </div>
+
+      <div class="blog-post-section">
+        <div class="blog-post-image-wrapper">
+          <img class="blog-post-image3" src="imgs/nasikandar.png" alt="Nasi Kandar">
+        </div>
+        <div class="blog-post-content-wrapper">
+          <p class="blog-post-text2" style="margin-left: 18px; margin-top: -78px;"> Nasi Kandar Line Clear</p>
+          <p class="blog-post-text">
+            Located in an Alleyway, but the fragrant smell of Indian spices and curry might lead some visitors astray. Classified a <i>true Malaysian street food</i>, Nasi Kandar Line Clear is a 
+            must have while you are in George Town. Known for their <i>Nasi Kuah Campur</i> and fish head curry, you might also want to try their prawns, chicken, sotong, beef and vegetables. Or we
+            would suggest to mix everything into one delicious goodness! However, the queue is usually quite long, so don't keep your stomach too empty (ps. eat something small first like a samosa).
+          </p>
+          <p class="blog-post-text" style="font-size: xx-small;font-style: italic;"> 
+            Image by TheHive.Asia.
+          </p>
+        </div>
+      </div>
+
+      <div class="blog-post-section">
+        <div class="blog-post-image-wrapper">
+          <img class="blog-post-image3" src="imgs/kebaya.png" alt="Kebaya Restaurant">
+        </div>
+        <div class="blog-post-content-wrapper">
+          <p class="blog-post-text2" style="margin-left: 18px; margin-top: -78px;"> Kebaya Restaurant</p>
+          <p class="blog-post-text">
+            This fancy restaurant with thick drapery, pendant chandeliers, and colorful tiled floors hints at the high prices you’ll be paying for your meal. 
+            But if you’re willing to splurge, this Nyonya fine dining is the way to do it.
+            Start your meal with the Pai Tee, a shy platter of shredded vegetables and sweet prawns in crispy “cups,” before moving on to the Lor Ark (duck confit with spices) 
+            and the Crispy Nyonya Tempura (deep fried vegetables in delicate batter).
+          </p>
+          <p class="blog-post-text" style="font-size: xx-small;font-style: italic;"> 
+            Image by Culture Trip.
+          </p>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; 2023 TravelBossKu, Inc. All Rights Reserved.</p>
+      </footer>
+
+    </div>
+
+<!-- JAVASCRIPT BEGINS HERE -->
+<script>
+
+  /* This part of the script belongs to the image hover effect */
+  const blogPostImageContainers = document.querySelectorAll('.blog-post-image-container');
+    
+  blogPostImageContainers.forEach(container => {
+    const image = container.querySelector('img');
+    const caption = container.querySelector('.blog-post-image-caption');
+    
+    container.addEventListener('mouseover', function() {
+      image.style.opacity = 0.8; /* Adjust the opacity value to your preference */
+      image.style.cursor = 'pointer';
+      caption.style.display = 'block';
+      });
+    
+    container.addEventListener('mouseout', function() {
+      image.style.opacity = 1;
+      caption.style.display = 'none';
+      });
+  });
+
+  /* This part of the script belongs to the footer for the invisibility transition (please do use it) */
+  window.addEventListener('scroll', function() {
+    const footer = document.querySelector('.footer');
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const bodyHeight = document.body.offsetHeight;
+
+    if (scrollPosition + windowHeight >= bodyHeight) {
+      footer.classList.add('show');
+    } else {
+      footer.classList.remove('show');
+    }
+  });
+
+</script>
+
+    
+</body>
+</html>

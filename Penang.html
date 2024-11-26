@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- CSS BEGINS HERE -->
+<style>
+
+    /* This part is for the overall style of the page */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Gill Sans, Gill Sans MT, Calibri, sans-serif;
+    }
+    
+    /* Starting from this part it belongs to the nav bar (please use) */
+    .header {
+      position: fixed;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 100px;
+      border-bottom: 2px solid rgba(5,76,150,255);
+      z-index: 2;
+    }
+    
+    .logo img {
+      height: 80px; 
+      width: auto; 
+      margin-right: 70px;  
+      margin-left: -50px;
+    }
+    
+    .navbar {
+      flex-grow: 0;
+      display: flex;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      gap: 60px;
+    }
+    
+    nav ul li {
+      margin-right: 20px;
+      background-color: rgba(5,76,150,255);
+      border-radius: 10px;
+      padding: 2px 30px; 
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      color: white;
+    }
+
+    .blue-line {
+      margin-top: 42px;
+      width: 200%;
+      height: 2px;
+      background-color: rgba(5, 76, 150, 255);
+      position: fixed;
+      top: 80px;
+      left: 0;
+      z-index: 1;
+    } 
+    /* Nav bar ends here */
+
+    /* This is exclusive to my content (can refer) */
+    /* It contains hover image style, captions, content/paragraph style, title, text, basically everything */
+    .blog-post-image {
+      margin-top: 100px;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .blog-post-image2 {
+      margin-top: 25px;
+      margin-bottom: 20px;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .blog-post-image3 {
+      margin-left: 10px;
+      margin-top: 25px;
+      margin-bottom: 20px;
+      margin-right: 10px;
+      width: 100%; /* Adjust the width for the images */
+      height: 300px;
+      object-fit: cover;
+    }
+
+    blog-post-content {
+      padding-top: 150px; 
+    }
+
+    .blog-post-content .blog-post-image {
+      position: relative;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .blog-post-content:hover .blog-post-image:not(.navbar .blog-post-image) {
+      opacity: 0.8; 
+      cursor: pointer;
+      z-index: 0;
+    }
+
+    .blog-post-content .blog-post-image2 {
+      position: relative;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .blog-post-content:hover .blog-post-image2:not(.navbar .blog-post-image2) {
+      opacity: 0.8; 
+      cursor: pointer;
+      z-index: 0;
+    }
+
+    .blog-post-title {
+      margin-left: 20px;
+      margin-top: 20px;
+      font-size: 50px;
+      font-weight: bold;
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .blog-post-sub-title {
+      margin-left: 20px;
+      margin-top: 5px;
+      font-size: 35px;
+      font-weight: bold;
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .blog-post-sub-title2 {
+      margin-left: 20px;
+      margin-top: 40px;
+      margin-bottom: 0px;
+      font-size: 35px;
+      font-weight: bold;
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .blog-post-text {
+      margin-top: 10px;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: black;
+      word-spacing: 3px;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    .blog-post-text2 {
+      font-size: 32px;
+      color: black;
+      word-spacing: 3px;
+      line-height: 1.5;
+      text-align: justify;
+      margin-top: -155px;
+    } 
+
+    .blog-post-image-caption {
+      position: absolute;
+      bottom: 40px;
+      left: 20px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 5px 10px;
+      border-radius: 5px;
+      width: calc(100% - 40px); 
+      display: none;
+    }
+
+    .blog-post-content:hover .blog-post-image-caption {
+      display: block;
+    }
+
+    .blog-post-image-container {
+      position: relative;
+    }
+
+    .blog-post-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      margin-right: 150px;
+    }
+
+    .blog-post-section-a:hover {
+      background-color: #7acafc9c; /* Set the desired light color for the hover effect */
+      cursor: pointer; /* Change the cursor to a pointer on hover */
+    }
+
+    .blog-post-image-wrapper {
+      flex: 0 0 300px;
+      margin-right: 20px;
+    }
+
+    .blog-post-content-wrapper {
+    flex: 1; /* Allow the content to take up remaining available space */
+    }
+
+    /* Body content ends here */
+
+    /* This is the style for the footer part (please do use it also) */
+    .footer {
+      position: fixed;
+      background-color: white;
+      display: flex;
+      align-items: left;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      border-top: 2px solid rgba(5, 76, 150, 255);
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer p {
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .footer.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Footer style ends here */
+</style>
+
+<!-- HTML BEGINS HERE -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>TravelBossKu: Penang</title>
+    <style>
+        body{
+            background: linear-gradient(45deg, #ffffff, #89cff0, #00ff00);
+            background-size: 400%, 400%;
+        }
+
+        @keyframes gradientAnimation{
+            0%{background-position: 0% 50%;}
+            50%{background-position: 100% 50%}
+            100%{background-position: 0% 50%}
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a class="logo" href="homepage.html"><img src="imgs/tbk_logo.png" alt="TBK Logo"></a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="states.html">States</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="contact_us html">Contact Us</a></li>
+                <li><a href="#">Dark Mode</a></li>
+                <li><a href="#">+</a></li>
+                <li><a href="#">Font Size</a></li>
+                <li><a href="#">-</a></li>
+        </nav>
+    </header>
+
+    <!-- Blue line below the navigation bar -->
+    <div class="blue-line"></div>
+
+    <!-- The html part for most of my body content -->
+    <div class="blog-post-content">
+
+      <!-- The first main image goes here -->
+      <div class="blog-post-image-container">
+        <img class="blog-post-image" src="imgs/penang4.jpg" alt="Penang Bridge">
+      </div>
+
+      <!-- Main title, sub-title and paragraph goes here -->
+      <p class="blog-post-title">Penang</p>
+      <p class="blog-post-text">Known as the Pearl of the Orient, Penang is an island situated on the Northwest coast of Peninsular Malaysia. 
+        It is split into two parts: Penang Island where Georgetown, the capital city is located and Mainland Penang where most government offices are situated.
+      </p>
+
+      <p class="blog-post-sub-title2">Why visit Penang</p>
+
+      <div class="blog-post-section">
+        <div class="blog-post-image-wrapper">
+          <img class="blog-post-image3" src="imgs/penang1.png" alt="Penang Street Art">
+        </div>
+        <div class="blog-post-content-wrapper">
+          <p class="blog-post-text2" style="margin-left: 18px; margin-top: -78px;">Culture and Heritage</p>
+          <p class="blog-post-text">
+            The Georgetown UNESCO World Heritage Site features Malaysia's best restored and re-adaptive traditional architecture 
+            as well as a multitude of heritage trades and arts.
+          </p>
+          <p class="blog-post-text" style="font-size: xx-small;font-style: italic;"> 
+            Image by Penang Foodie.
+          </p>
+        </div>
+      </div>
+
+      <div class="blog-post-section">
+        <div class="blog-post-image-wrapper">
+          <img class="blog-post-image3" src="imgs/bukitbendera.jpg" alt="Bukit Bendera">
+        </div>
+        <div class="blog-post-content-wrapper">
+          <p class="blog-post-text2" style="margin-left: 18px; margin-top: -78px;">Nature and Adventure</p>
+          <p class="blog-post-text">
+            Penang packs in a lot more than one assumes. Nature lovers and sport enthusiasts who seek a break from 
+            the usual tourist activities will be pleasantly surprised by what Penang can offer.
+          </p>
+          <p class="blog-post-text" style="font-size: xx-small;font-style: italic;"> 
+            Image by buletin Mutiara
+          </p>
+        </div>
+      </div>
+
+      <div class="blog-post-section">
+        <div class="blog-post-image-wrapper">
+          <img class="blog-post-image3" src="imgs/penang2.jpg" alt="Penang Food">
+        </div>
+        <div class="blog-post-content-wrapper">
+          <p class="blog-post-text2" style="margin-left: 18px; margin-top: -78px;">Food and Liyestyle</p>
+          <p class="blog-post-text">
+            Shop and malls or an artisan;s shophouse and bring home a little piece of Penang as a reminder pf your adventures.
+          </p>
+          <p class="blog-post-text" style="font-size: xx-small;font-style: italic;"> 
+            Image by Silverkris.
+          </p>
+        </div>
+      </div>
+
+      <p class="blog-post-sub-title">City to visit in Penang</p>
+
+      <a href="George Town - Complete.html" style="text-decoration: none;">
+        <div class="blog-post-section-a">
+          <div class="blog-post-image-wrapper">
+            <img class="blog-post-image3" src="imgs/georgetown2.jpg" alt="Zoo Negara">
+          </div>
+          <div class="blog-post-content-wrapper">
+            <p class="blog-post-text2" style="margin-top: -15px; margin-left: 18px;">George Town</p>
+            <p class="blog-post-text" style="margin-left: 18px; margin-bottom: 60px;">
+              The capital city of Penang and the eigth-most populous city proper in Malaysia. Georgetown is an important hub of arts, culture, manufacturng, 
+              transportation, education, healthcare and media in Malaysia.
+            </p>
+            <p class="blog-post-text" style="font-size: xx-small;font-style: italic;"> 
+              Image by PropSocial.
+            </p>
+         
+          </div>
+        </div>
+        </a>
+
+      <footer class="footer">
+        <p>&copy; 2023 TravelBossKu, Inc. All Rights Reserved.</p>
+      </footer>
+
+    </div>
+
+<!-- JAVASCRIPT BEGINS HERE -->
+<script>
+
+  /* This part of the script belongs to the image hover effect */
+  const blogPostImageContainers = document.querySelectorAll('.blog-post-image-container');
+    
+  blogPostImageContainers.forEach(container => {
+    const image = container.querySelector('img');
+    const caption = container.querySelector('.blog-post-image-caption');
+    
+    container.addEventListener('mouseover', function() {
+      image.style.opacity = 0.8; /* Adjust the opacity value to your preference */
+      image.style.cursor = 'pointer';
+      caption.style.display = 'block';
+      });
+    
+    container.addEventListener('mouseout', function() {
+      image.style.opacity = 1;
+      caption.style.display = 'none';
+      });
+  });
+
+  /* This part of the script belongs to the footer for the invisibility transition (please do use it) */
+  window.addEventListener('scroll', function() {
+    const footer = document.querySelector('.footer');
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const bodyHeight = document.body.offsetHeight;
+
+    if (scrollPosition + windowHeight >= bodyHeight) {
+      footer.classList.add('show');
+    } else {
+      footer.classList.remove('show');
+    }
+  });
+
+</script>
+
+    
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- CSS BEGINS HERE -->
+<style>
+
+    /* This part is for the overall style of the page */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Gill Sans, Gill Sans MT, Calibri, sans-serif;
+    }
+    
+    /* Starting from this part it belongs to the nav bar (please use) */
+    body {
+      min-height: 145vh;
+      background: linear-gradient(45deg, #ffffff, #89cff0, #00ff00);
+      background-size: 400%, 400%;
+    }
+
+    @keyframes gradientAnimation{
+            0%{background-position: 0% 50%;}
+            50%{background-position: 100% 50%}
+            100%{background-position: 0% 50%}
+    }
+    
+    .header {
+      position: fixed;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 100px;
+      border-bottom: 2px solid rgba(5,76,150,255);
+      z-index: 2;
+    }
+    
+    .logo img {
+      height: 80px; 
+      width: auto; 
+      margin-right: 70px;  
+      margin-left: -50px;
+    }
+    
+    .navbar {
+      flex-grow: 0;
+      display: flex;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      gap: 60px;
+    }
+    
+    nav ul li {
+      margin-right: 20px;
+      background-color: rgba(5,76,150,255);
+      border-radius: 10px;
+      padding: 2px 30px; 
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      color: white;
+    }
+
+    .blue-line {
+      margin-top: 42px;
+      width: 200%;
+      height: 2px;
+      background-color: rgba(5, 76, 150, 255);
+      position: fixed;
+      top: 80px;
+      left: 0;
+      z-index: 1  ;
+    } 
+    /* Nav bar ends here */
+
+    h1 {
+  color: darkblue;
+  font-size: 35px;
+  position: absolute;
+  top: 175px;
+  left: 210px;
+       }
+
+       #h61{
+  color: darkblue;
+  font-size: 25px;
+  position: absolute;
+  top: 260px;
+  left: 60px;
+       }
+    
+       #img2{position: absolute;
+          top: 150px;
+          left: 100px;
+       }
+
+       #h62{
+  color: darkblue;
+  font-size: 25px;
+  position: absolute;
+  top: 335px;
+  left: 60px;
+ 
+       }
+
+       input[type="text"] {
+        width: 375px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        position: absolute;
+        top: 376px;
+        left: 60px;
+
+      }
+
+      #tb1 {
+        width: 375px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        position: absolute;
+        top: 376px;
+        left: 60px;
+        z-index: 1;
+
+      }
+
+      #h63{
+  color: darkblue;
+  font-size: 25px;
+  position: absolute;
+  top: 335px;
+  left: 600px;
+       }
+
+       
+       
+       #tb2 {
+        width: 375px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        position: absolute;
+        top: 376px;
+        left: 600px;
+        z-index: 1;
+
+      }
+
+      #tb3 {
+        width: 400px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        position: absolute;
+        top: 715px;
+        left: 60  px;
+
+      }
+      
+      #h64{
+  color: darkblue;
+  font-size: 25px;
+  position: absolute;
+  top: 460px;
+  left: 60px;
+       }
+
+       /* Style for the button and the wrapper */
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 5px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 50px 700px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  /* Move the button to the right */
+  margin-left: 60px;
+  margin-top: 505px;
+}
+
+/* Hide the input file element */
+input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 60px;
+  top: 505px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Show a hover effect for the button */
+.btn:hover {
+  background-color: #f1f1f1;
+}
+
+#h65{
+  color: darkblue;
+  font-size: 25px;
+  position: absolute;
+  top: 675px;
+  left: 60px;
+       }
+
+       
+
+      #h66{
+  color: darkblue;
+  font-size: 25px;
+  position: absolute;
+  top: 775px;
+  left: 60px;
+       }
+
+       #tb4 {
+        width: 450px;
+        height: 200px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        position: absolute;
+        top: 815px;
+        left: 60px;
+
+      }
+
+      /* This is the style for the footer part (please do use it also) */
+    .footer {
+      position: fixed;
+      background-color: white;
+      display: flex;
+      align-items: left;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      border-top: 2px solid rgba(5, 76, 150, 255);
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer p {
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .footer.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Footer style ends here */  
+
+    #sendemail  {
+        color: darkblue;
+  font-size: 30px;
+  position: absolute;
+  top: 1050px;
+  left: 63px;
+       }
+
+       
+       
+
+              
+            
+ </style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Navbar for TravelBossKu</title>
+
+    <script>
+      // Global variable to store the current font size
+      let currentFontSize = 16; // You can set the initial font size as per your requirement
+  
+      // Function to increase the font size
+      function increaseFontSize() {
+        currentFontSize += 2; // You can adjust the increment value as needed
+        applyFontSize();
+      }
+  
+      // Function to decrease the font size
+      function decreaseFontSize() {
+        currentFontSize -= 2; // You can adjust the decrement value as needed
+        applyFontSize();
+      }
+  
+      // Function to apply the current font size to relevant elements
+      function applyFontSize() {
+        const elementsToUpdate = document.querySelectorAll('h1, h6, p');
+        elementsToUpdate.forEach((element) => {
+          element.style.fontSize = currentFontSize + 'px';
+        });
+      }
+    </script>
+</head>
+
+<body>
+  <header class="header">
+    <a class="logo" href="#"><img src="https://i.imgur.com/iGXzQbu.png" alt="Logo"></a>
+    <nav class="navbar">
+        <ul>
+            <li><a href="States.html">States</a></li>
+            <li><a href="Forum.html">Forum</a></li>
+            <li><a href="Contact.html">Contact Us</a></li>
+            <li><a href="#">Dark Mode</a></li>
+            <li><a href="#" onclick="increaseFontSize()">+</a></li>
+            <li><a href="#">Font Size</a></li>
+            <li><a href="#" onclick="decreaseFontSize()">-</a></li>
+    </nav>
+</header>
+ <!-- Blue line below the navigation bar -->
+ <div class="blue-line"></div>
+    <main>
+    <h1>TravelBossKu Submission Form</h1>
+
+    <div id = "img2">
+        <a class="logo" href="#"><img src="https://i.imgur.com/iGXzQbu.png" alt="Logo"></a>
+        </div>
+   
+    <h6 id = 'h61'>*required fields</h6>
+    <h6 id = 'h62'>Author Name *</h6> 
+    <input type="text" id ="tb1" placeholder="Enter text here">
+    
+    <h6 id = 'h63'>Email *</h6>
+    <input type="text" id ="tb2" placeholder="Enter text here">
+
+     
+
+    <h6 id = 'h64'>Upload Photo: *</h6>
+
+    <div class="upload-btn-wrapper">
+      <input type="file" name="myfile" id="file" />
+      <button class="btn">Upload a photo</button>
+    </div>
+
+    <h6 id = 'h65'>Article Title *</h6>
+    <input type="text" id = "tb3" placeholder="Enter text here">
+
+   
+
+    <h6 id = 'h66'>Article Content *</h6>
+    <input type="text" id = "tb4" placeholder="Enter text here">
+
+    <a href="#" id = "sendemail" onclick="return validateForm()">Submit</a>
+
+    <footer class="footer">
+      <p>&copy; 2023 TravelBossKu, Inc. All Rights Reserved.</p>
+    </footer>
+
+ <script>
+    /* This part of the script belongs to the footer for the invisibility transition (please do use it) */
+  window.addEventListener('scroll', function() {
+    const footer = document.querySelector('.footer');
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const bodyHeight = document.body.offsetHeight;
+
+    if (scrollPosition + windowHeight >= bodyHeight) {
+      footer.classList.add('show');
+    } else {
+      footer.classList.remove('show');
+    }
+  }); 
+
+  function validateForm() {
+        const authorname = document.getElementById("tb1").value;
+        const email = document.getElementById("tb2").value;
+        const articletitle = document.getElementById("tb3").value;
+        const articlecontent = document.getElementById("tb4").value;
+       
+
+        // Check if required fields are filled
+        if (authorname.trim() === "") {
+          alert("Name field is required.");
+          return false;
+        }
+
+        if (email.trim() === "") {
+          alert("Email field is required.");
+          return false;
+        }
+
+        if (articletitle.trim() === "") {
+          alert("Subject field is required.");
+          return false;
+        }
+
+        if (articlecontent.trim() === "") {
+          alert("Message field is required.");
+          return false;
+        }
+
+        // If all fields are filled, you can submit the form here
+        alert("Form submitted successfully!");
+        return true;
+      }
+    
+
+      
+
+
+
+    </script>
+
+
+
+    </main>
+</body>
+
+</html>

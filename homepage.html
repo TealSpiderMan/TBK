@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- CSS BEGINS HERE -->
+<style>
+
+    /* This part is for the overall style of the page */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Gill Sans, Gill Sans MT, Calibri, sans-serif;
+    }
+    
+    /* Starting from this part it belongs to the nav bar (please use) */
+    body {
+      min-height: 100vh;
+      background: linear-gradient(45deg, #ffffff, #89cff0, #00ff00);
+      background-size: 400%, 400%;
+    }
+
+    @keyframes gradientAnimation{
+            0%{background-position: 0% 50%;}
+            50%{background-position: 100% 50%}
+            100%{background-position: 0% 50%}
+    }
+    
+    .header {
+      position: fixed;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 100px;
+      border-bottom: 2px solid rgba(5,76,150,255);
+      z-index: 2;
+    }
+    
+    .logo img {
+      height: 80px; 
+      width: auto; 
+      margin-right: 70px;  
+      margin-left: -50px;
+    }
+    
+    .navbar {
+      flex-grow: 0;
+      display: flex;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      gap: 60px;
+    }
+    
+    nav ul li {
+      margin-right: 20px;
+      background-color: rgba(5,76,150,255);
+      border-radius: 10px;
+      padding: 2px 30px; 
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: black;
+      font-size: 18px;
+      color: white;
+    }
+
+    .login-dropdown {
+        position: relative;
+    }
+
+    .login-dropdown .login-options {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: rgba(5, 76, 150, 255);
+        border-radius: 5px;
+        padding: 10px;
+        display: none;
+    }
+
+    .login-dropdown:hover .login-options {
+        display: block;
+    }
+
+    .login-dropdown i {
+        margin-left: 5px;
+    }
+
+    .login-options a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 5px;
+    }
+
+    .login-options a:hover {
+        background-color: #003366;
+    }
+
+    .blue-line {
+      margin-top: 42px;
+      width: 200%;
+      height: 2px;
+      background-color: rgba(5, 76, 150, 255);
+      position: fixed;
+      top: 80px;
+      left: 0;
+      z-index: 1;
+    } 
+    /* Nav bar ends here */
+
+    /* This is exclusive to my content (can refer) */
+    /* It contains hover image style, captions, content/paragraph style, title, text, basically everything */
+    .blog-post-image {
+      margin-top: 100px;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+
+    .blog-post-image2 {
+    max-height: 300px;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 100px;
+    }
+
+    blog-post-content {
+      padding-top: 150px; 
+    }
+
+    .blog-post-content .blog-post-image {
+      position: relative;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .blog-post-content:hover .blog-post-image:not(.navbar .blog-post-image) {
+      opacity: 0.8; 
+      cursor: pointer;
+      z-index: 0;
+    }
+
+    .blog-post-content .blog-post-image2 {
+      position: relative;
+      z-index: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .blog-post-content:hover .blog-post-image2:not(.navbar .blog-post-image2) {
+      opacity: 0.8; 
+      cursor: pointer;
+      z-index: 0;
+    }
+
+    .blog-post-title {
+      margin-left: 20px;
+      margin-top: 35px;
+      font-size: 70px;
+      font-weight: bold;
+      color: rgba(5, 76, 150, 255);
+      text-align: center;
+      line-height: 2.0;
+    }
+
+    .blog-post-sub-title {
+      margin-left: 20px;
+      margin-top: 5px;
+      font-size: 35px;
+      font-weight: bold;
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .blog-post-sub-title2 {
+      margin-left: 20px;
+      margin-top: 40px;
+      margin-bottom: 0px;
+      font-size: 35px;
+      font-weight: bold;
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .blog-post-text {
+      margin-top: 30px;
+      margin-left: 50px;
+      margin-right: 50px;
+      margin-bottom: 50px;
+      font-size: 25px;
+      color: black
+      word-spacing: 3px;
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .blog-post-image-caption {
+      position: absolute;
+      bottom: 40px;
+      left: 20px;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 5px 10px;
+      border-radius: 5px;
+      width: calc(100% - 40px); 
+      display: none;
+    }
+
+    .blog-post-content:hover .blog-post-image-caption {
+      display: block;
+    }
+
+    .blog-post-image-container {
+      position: relative;
+    }
+    /* Body content ends here */
+
+    /* This is the style for the footer part (please do use it also) */
+    .footer {
+      position: fixed;
+      background-color: white;
+      display: flex;
+      align-items: left;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px 30px;
+      border-top: 2px solid rgba(5, 76, 150, 255);
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer p {
+      color: rgba(5, 76, 150, 255);
+    }
+
+    .footer.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    /* Footer style ends here */
+</style>
+
+<!-- HTML BEGINS HERE -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>TravelBossKu: Shah Alam</title>
+</head>
+
+<body>
+    <header class="header">
+        <a class="logo" href="homepage.html"><img src="imgs/tbk_logo.png" alt="Logo"></a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="states.html">States</a></li>
+                <li><a href="forum.html">Forum</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#">Dark Mode</a></li>
+                <li><a href="#">+</a></li>
+                <li><a href="#">Font Size</a></li>
+                <li><a href="#">-</a></li>
+                <li class="login-dropdown">
+                  <a href="#">Login <i class="fas fa-lock"></i></a>
+                  <div class="login-options">
+                      <a href="login.html">Sign In</a>
+                      <a href="signup.html">Register</a>
+                  </div>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Blue line below the navigation bar -->
+    <div class="blue-line"></div>
+
+    <!-- The html part for most of my body content -->
+    <div class="blog-post-content">
+
+      <!-- The first main image goes here -->
+      <!-- EDIT THIS IMAGE TO KL ####################-->
+      <div class="blog-post-image-container"> 
+        <img class="blog-post-image" src="imgs/kuala_lumpur_image.jpg" alt="Kuala Lumpur Menara Towers">
+        <p class="blog-post-image-caption">By colornyomda - https://wallpapercave.com/w/wp2378925</p>
+      </div>
+
+      <!-- Main title, sub-title and paragraph goes here -->
+      <p class="blog-post-title">Welcome to TravelBossKu</p>
+      <p class="blog-post-text">TravelBossKu is a comprehensive travel guide website that provides valuable information and tips for 
+        exploring Malaysia. What sets it apart is its interactive forum, where visitors can share their personal travel stories and 
+        experiences from their journeys across Malaysia. From hidden gems to must-visit attractions, the forum creates a vibrant community 
+        of travelers who can exchange insights, recommendations, and memorable tales. Whether you're seeking inspiration or eager to 
+        contribute your own stories, TravelBossKu offers a platform for travelers to connect, learn, and create a deeper connection with 
+        the beauty and diversity of Malaysia.</p>
+
+    </div>
+
+    <div style="display: flex; text-align: center; margin-left: 270px;">
+        <a href="forum.html">
+            <img class="blog-post-image2" src="imgs/tbk_forum.png" alt="TBK forum">
+        </a>
+        <a href="states.html">
+            <img class="blog-post-image2" src="imgs/travelbossku_states.png" alt="TBK states">
+        </a>
+  </div>
+    
+      <footer class="footer">
+        <p>&copy; 2023 TravelBossKu, Inc. All Rights Reserved.</p>
+      </footer>
+
+
+<!-- JAVASCRIPT BEGINS HERE -->
+<script>
+
+  /* This part of the script belongs to the image hover effect */
+  const blogPostImageContainers = document.querySelectorAll('.blog-post-image-container');
+    
+  blogPostImageContainers.forEach(container => {
+    const image = container.querySelector('img');
+    const caption = container.querySelector('.blog-post-image-caption');
+    
+    container.addEventListener('mouseover', function() {
+      image.style.opacity = 0.8; /* Adjust the opacity value to your preference */
+      image.style.cursor = 'pointer';
+      caption.style.display = 'block';
+      });
+    
+    container.addEventListener('mouseout', function() {
+      image.style.opacity = 1;
+      caption.style.display = 'none';
+      });
+  });
+
+  /* This part of the script belongs to the footer for the invisibility transition (please do use it) */
+  window.addEventListener('scroll', function() {
+    const footer = document.querySelector('.footer');
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const bodyHeight = document.body.offsetHeight;
+
+    if (scrollPosition + windowHeight >= bodyHeight) {
+      footer.classList.add('show');
+    } else {
+      footer.classList.remove('show');
+    }
+  });
+
+</script>
+
+    
+</body>
+</html>

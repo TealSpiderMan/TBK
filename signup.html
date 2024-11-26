@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign-Up Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .logo {
+      width: 100px; /* Adjust the width of the logo */
+      margin-bottom: 10px;
+    }
+    input {
+      width: 95%; /* Adjust the width to make the textboxes smaller */
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .required-label {
+      color: red;
+    }
+    a.button {
+      display: block;
+      width: 95%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .switch-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .switch-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="imgs/tbk_logo.png" alt="TravelBossKu Logo">
+    <h1>TravelBossKu Sign Up</h1>
+    <form id="signup-form">
+      <label for="username">Username<span class="required-label">*</span></label>
+      <input type="text" id="username" placeholder="Username" required>
+
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" placeholder="Full Name">
+
+      <label for="email">Email<span class="required-label">*</span></label>
+      <input type="email" id="email" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+
+      <label for="password">Password<span class="required-label">*</span></label>
+      <input type="password" id="password" placeholder="Password" required>
+
+      <a href="javascript:void(0);" class="button" onclick="validateAndRedirect()">Sign Up</a>
+    </form>
+    <div class="switch-link">
+      <a href="login.html">Already have an account? Log In</a>
+    </div>
+  </div>
+
+  <script>
+    function validateAndRedirect() {
+      const usernameInput = document.querySelector('#username');
+      const fullNameInput = document.querySelector('#fullname');
+      const emailInput = document.querySelector('#email');
+      const passwordInput = document.querySelector('#password');
+
+      if (usernameInput.value === "") {
+        alert("Please enter your username.");
+      } else if (!emailInput.checkValidity()) {
+        alert("Please enter a valid email address.");
+      } else if (passwordInput.value === "") {
+        alert("Please enter a password.");
+      } else if (passwordInput.value.length < 8) {
+        alert("Password must be at least 8 characters long.");
+      } else if (!/(?=.*[A-Z])(?=.*\d)/.test(passwordInput.value)) {
+        alert("Password must include at least one capital letter and one number.");
+      } else {
+        alert("Account registered successfully. Thank you for registering your account!");
+        // Redirect to the login page using window.location.href
+        window.location.href = "login.html";
+      }
+    }
+  </script>
+</body>
+</html>
